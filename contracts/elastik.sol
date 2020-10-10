@@ -1,7 +1,7 @@
 pragma solidity >=0.4.22 <0.8.0;
 
 contract Elastik is StandardToken {
-    string public name = "Elastik";
+    string public name = "Elastikchain";
     string public symbol = "ECH";
     unit8 public decimals = 2;
     unit public INITIAL_SUPPLY = 5000;
