@@ -9,6 +9,12 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "keywords": [],
+  "author": "midmoussi",
+  "license": "ISC",
+  "dependencies": {
+    "zeppelin-solidity": "1.12.0"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.4",
