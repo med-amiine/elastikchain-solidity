@@ -225,6 +225,9 @@
     <!-- /.modal -->
 
 
+
+
+
     <!-- second project (profile startup) -->
     <!-- Page Content -->
 <div class="container" *ngIf="idPage == 2" >
@@ -239,8 +242,8 @@
           <!-- Title -->
           <h1 class="mt-4">Post Title 2</h1>
         </div>
-        <div>
-
+        <div class="mt-4">
+          <button class="btn btn-small btn-secondary" (click)="open(fundingstatus)">Funding Status</button>
         </div>
       </div>
   
@@ -370,3 +373,20 @@
 <!-- /.container -->
 
   
+
+
+<!-- modal profile (stratup) -->
+<ng-template #fundingstatus let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Funding Status</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <img class="img-fluid rounded" src="assets/img/projects/description/project2-description.png" alt="">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

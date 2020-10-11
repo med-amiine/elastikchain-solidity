@@ -30,7 +30,7 @@ export class ProjectDescriptionComponent implements OnInit {
     this.idPage = this.route.snapshot.paramMap.get('id');
   }
   open(vote) {
-    this.modalService.open(vote, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(vote, {ariaLabelledBy: 'modal-basic-title', size: 'lg' });
   }
 
 }
