@@ -22,9 +22,7 @@ import {
       })),
       state('closed', style({
         width: '0px',
-        opacity: 0.5,
-        // marginLeft: 'Opx !important',
-        // display: 'none'
+        opacity: 0.5
       })),
       transition('open => closed', [
         animate('0.5s')
