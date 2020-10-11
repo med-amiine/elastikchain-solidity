@@ -17,7 +17,7 @@ import {
     trigger('openClose', [
       // ...
       state('open', style({
-        width: '240px',
+        width: '260px',
         opacity: 1
       })),
       state('closed', style({

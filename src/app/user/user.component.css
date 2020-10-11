@@ -16,7 +16,7 @@
   border: 0px;
   /* min-height: 100vh; */
   /* margin-left: -15rem; */
-  width: 240px; /* Set the width of the sidebar */
+  width: 260px; /* Set the width of the sidebar */
   position: sticky; /* Fixed Sidebar (stay in place on scroll) */
   position: -webkit-sticky;
   z-index: 1; /* Stay on top */
@@ -33,7 +33,7 @@
 }
 
 #sidebar-wrapper .list-group {
-  width: 240px;
+  width: 100%;
 }
 #sidebar-wrapper .list-group a{
   text-decoration: none;
