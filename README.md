@@ -6,7 +6,7 @@
 
 # ElastikChain
 Elastik-Chain is a DApp that will help lunch other Dapps by making sure that the fund and sponsors prizes are well managed and we are also giving you the choice as a user to choose the best Dapps to get funded.
-It's not much but its done in less than 48 hours.
+> It's not much but its done in less than 48 hours.
 
 
 # About environement
