@@ -1,0 +1,28 @@
+<div class="login-page">
+  
+    <div class="form">
+        <div class="p-3">
+            <a routerLink="" class="btn"><h2>ElastikChain</h2></a>
+        </div>
+       
+        <div *ngIf="isRegister==false">
+            <form class="login-form">
+                <input type="text" placeholder="username"/>
+                <input type="password" placeholder="password"/>
+                <button routerLink="/user">login</button>
+                <p class="message">Not registered? <a [routerLink]="" (click)="toggleRegister()">Create an account</a></p>
+            </form>
+        </div>
+        <div *ngIf="isRegister==true">
+            <form class="register-form">
+                <input type="text" placeholder="name"/>
+                <input type="password" placeholder="password"/>
+                <input type="text" placeholder="email address"/>
+                <button>create</button>
+                <p class="message">Already registered? <a [routerLink]="" (click)="toggleRegister()">Sign In</a></p>
+            </form>
+        </div>     
+    </div>
+  </div>
+
+ 
