@@ -10,7 +10,7 @@ import { CategoriesComponent } from './user/categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { ProjectsComponent } from './user/projects/projects.component';
-import { PrejectDescriptionComponent } from './user/projects/preject-description/preject-description.component';
+import { ProjectDescriptionComponent } from './user/projects/project-description/project-description.component';
 
 
 
@@ -22,7 +22,7 @@ import { PrejectDescriptionComponent } from './user/projects/preject-description
     UserComponent,
     LoginComponent,
     ProjectsComponent,
-    PrejectDescriptionComponent
+    ProjectDescriptionComponent
   ],
   imports: [
     BrowserModule,

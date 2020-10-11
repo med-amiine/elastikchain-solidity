@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrejectDescriptionComponent } from './preject-description.component';
+import { PrejectDescriptionComponent } from './project-description.component';
 
 describe('PrejectDescriptionComponent', () => {
   let component: PrejectDescriptionComponent;

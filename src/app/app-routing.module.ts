@@ -1,3 +1,4 @@
+import { ProjectDescriptionComponent } from './user/projects/project-description/project-description.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -16,8 +17,12 @@ const routes: Routes = [
         path: 'categories', component: CategoriesComponent
       },
       {
-        path: 'projects', component: ProjectsComponent
-      }
+        path: 'projects', 
+        component: ProjectsComponent,
+      },
+      {
+        path: 'description/:id', component: ProjectDescriptionComponent
+      },
     ] 
   },
   { path: 'login', component: LoginComponent },
