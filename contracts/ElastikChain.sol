@@ -1,6 +1,19 @@
 pragma solidity ^0.4.17;
 
-contract Elastikchain {
+contract Elastikchain{
+    address[] public deployedChallenges;
+    
+    function creatChallenge(uint minimum) public{
+        address newChallenge = new Elastik(minimum, msg.sender);
+        deployedChallenges.push(newChallenge);
+    }
+    
+    function getDeployedChallenges() public view returns (address[]){
+        return deployedChallenges;
+    }
+}
+
+contract Elastik {
     
     struct Dapp {
         string DappName;
@@ -16,7 +29,6 @@ contract Elastikchain {
     uint public minimumContribution;
     mapping(address => bool) public investors;
     uint investorsCount;
-
 
     modifier restricted() {
         require(msg.sender == sponsor);
@@ -64,15 +76,21 @@ contract Elastikchain {
     //      finalizeDapp(uint index );
     // }
     
+    // after milestone validation sponsors can send money
+    function milestoneValidation(uint index) public restricted{
+            Dapp storage request = projects[index];
+            request.recipient.transfer(request.value);
+    }
 
     function finalizeDapp(uint index ) public restricted {
         Dapp storage request = projects[index];
 
         //require(request.votersCount > 2));
         require(!request.complete);
-
-        request.recipient.transfer(request.value);
+        // only half the cash is sent to the wineer
+        request.recipient.transfer(request.value / 2);
         request.complete = true;
         //add reset all projects code here
      }
+
     }
