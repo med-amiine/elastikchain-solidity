@@ -12,12 +12,22 @@ contract Lottery {
         players.push(msg.sender);   
     }
     function random() private view returns (unit){
-        return uint(keccak256(block.difficulty,now,players));
+        return uint(keccak256(abi.encodePacked(block.difficulty,now,players)));
     }
-    function pickWinner() public {
-        require(msg.sender == manager);
+    function pickWinner() public onlyManager {
+        //require(msg.sender == manager); we added restricted already
         uint index = random() % players.lenght;
         players[index].transfer(this.balance);
         players = new address[](0);
+    }
+
+    function returnEntries(){ 
+    }
+    modifier onlyManager(){
+        required(msg.sender == manager);
+        _;
+    }
+    function getPlayers() public view returns (address[]){
+        return players;
     }
 }
