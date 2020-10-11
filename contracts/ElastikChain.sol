@@ -11,7 +11,7 @@ contract Elastikchain {
         mapping(address => bool) voters;
     }
 
-    Dapp[] public requests;
+    Dapp[] public projects;
     address public sponsor;
     uint public minimumContribution;
     mapping(address => bool) public investors;
@@ -46,27 +46,33 @@ contract Elastikchain {
            votersCount: 0
         });
 
-        requests.push(newDapp);
+        projects.push(newDapp);
     }
 
     function VoteDapp(uint index) public {
-        Dapp storage request = requests[index];
+        Dapp storage request = projects[index];
 
         //require(investors[msg.sender]);
         require(!request.voters[msg.sender]);
 
         request.voters[msg.sender] = true;
         request.votersCount++;
-
     }
 
-    function finalizeDapp(uint index ) public restricted {
-        Dapp storage request = requests[index];
+    //  function getWinner() private view returns (unit){
+    //      get the high votersCount Dapp and send to finalize
+    //      finalizeDapp(uint index );
+    // }
+    
 
-        require(request.votersCount > (investorsCount / 2));
+    function finalizeDapp(uint index ) public restricted {
+        Dapp storage request = projects[index];
+
+        //require(request.votersCount > 2));
         require(!request.complete);
 
         request.recipient.transfer(request.value);
         request.complete = true;
+        //add reset all projects code here
      }
     }
