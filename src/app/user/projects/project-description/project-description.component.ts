@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { NgbModal, NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-preject-description',
@@ -9,17 +10,27 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProjectDescriptionComponent implements OnInit {
 
   closeResult = '';
-  currentRate = 5;
+  currentRate = 0;
+  idPage;
   model = {
     yes: true,
     no: false
   };
-  ngOnInit(): void {
+  
+  constructor(
+    private modalService: NgbModal,
+    config: NgbRatingConfig,
+    private route: ActivatedRoute
+    ) {
+      // customize default values of ratings used by this component tree
+    config.max = 5;
   }
-  constructor(private modalService: NgbModal) {}
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  ngOnInit(): void {
+    this.idPage = this.route.snapshot.paramMap.get('id');
+  }
+  open(vote) {
+    this.modalService.open(vote, {ariaLabelledBy: 'modal-basic-title'});
   }
 
 }
