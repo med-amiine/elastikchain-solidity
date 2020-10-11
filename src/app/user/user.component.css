@@ -55,7 +55,7 @@
   position: sticky; /* Fixed Sidebar (stay in place on scroll) */
   position: -webkit-sticky; 
   top: 0;
-  z-index: 1; /* Stay on top */
+  z-index: 2; /* Stay on top */
 }
 
 #wrapper.toggled #sidebar-wrapper {

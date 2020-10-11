@@ -9,6 +9,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProjectDescriptionComponent implements OnInit {
 
   closeResult = '';
+  currentRate = 5;
+  model = {
+    yes: true,
+    no: false
+  };
   ngOnInit(): void {
   }
   constructor(private modalService: NgbModal) {}

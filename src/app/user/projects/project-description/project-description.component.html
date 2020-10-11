@@ -150,13 +150,62 @@
     <!-- modal -->
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Vote a project</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
       <form>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">
+            Why do you like this project ? 
+          </label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="d-flex justify-content-between">
+            <div>
+              <label for="exampleFormControlTextarea1">
+                Why do you like this project ? 
+              </label>
+            </div>
+            <div>
+              <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+                <label ngbButtonLabel class="btn-sm btn-secondary">
+                  <input ngbButton type="radio" [value]="true"> Yes
+                </label>
+                <label ngbButtonLabel class="btn-sm btn-secondary">
+                  <input ngbButton type="radio" [value]="false"> No
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="d-flex justify-content-between">
+            <div>
+              <label for="exampleFormControlTextarea1">
+                Overall rating of the project
+              </label>
+            </div>
+            <div>
+              <ngb-rating [(rate)]="currentRate"></ngb-rating>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">
+              Would you like to donate to this project (0.002 BTCU)
+            </label>
+          </div>
+     
+        </div>
+       
+        <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
         <!-- <div class="form-group">
           <label for="dateOfBirth">Date of birth</label>
           <div class="input-group">
