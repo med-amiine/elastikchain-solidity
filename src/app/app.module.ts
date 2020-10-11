@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { CategoriesComponent } from './user/categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
+import { ProjectsComponent } from './user/projects/projects.component';
+import { PrejectDescriptionComponent } from './user/projects/preject-description/preject-description.component';
 
 
 
@@ -18,7 +20,9 @@ import { LoginComponent } from './user/login/login.component';
     HomeComponent,
     CategoriesComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    ProjectsComponent,
+    PrejectDescriptionComponent
   ],
   imports: [
     BrowserModule,

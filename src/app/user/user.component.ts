@@ -17,18 +17,16 @@ import {
     trigger('openClose', [
       // ...
       state('open', style({
-        width: '260px',
-        opacity: 1
+        width: '260px'
       })),
       state('closed', style({
-        width: '0px',
-        opacity: 0.5
+        width: '0px'
       })),
       transition('open => closed', [
-        animate('0.5s')
+        animate('0.2s')
       ]),
       transition('closed => open', [
-        animate('0.5s')
+        animate('0.2s')
       ]),
     ]),
   ]
