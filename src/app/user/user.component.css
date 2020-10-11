@@ -9,6 +9,7 @@
  }
 
 #sidebar-wrapper {
+  border: 0px;
   min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
@@ -19,13 +20,25 @@
 
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
+  width: 240px;
 }
-
+#sidebar-wrapper .list-group a{
+  text-decoration: none;
+  border: 5px solid transparent;
+  margin: 2px 5px 2px 5px;
+  padding: 10px;
+  color: white;
+}
+#sidebar-wrapper .list-group a:hover{
+  border: 5px solid #e43c5c;
+  color: #e43c5c;
+  background-color: transparent;
+}
 #page-content-wrapper {
   min-width: 100vw;
 }
