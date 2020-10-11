@@ -9,6 +9,10 @@
  }
 
 #sidebar-wrapper {
+  position: fixed;
+  z-index: 1;
+  min-width: 240px;
+  top: 0;
   border: 0px;
   min-height: 100vh;
   margin-left: -15rem;
@@ -41,6 +45,7 @@
 }
 #page-content-wrapper {
   min-width: 100vw;
+  margin-left: 240px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -55,6 +60,7 @@
   #page-content-wrapper {
     min-width: 0;
     width: 100%;
+    margin-left: 240px;
   }
 
   #wrapper.toggled #sidebar-wrapper {
