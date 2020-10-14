@@ -29,6 +29,9 @@ contract Elastik {
     uint public minimumContribution;
     mapping(address => bool) public investors;
     uint investorsCount;
+    uint public winnerIndex;
+    bool public contractOpen;
+
 
     modifier restricted() {
         require(msg.sender == sponsor);
@@ -38,6 +41,7 @@ contract Elastik {
     constructor(uint minimum, address creator) public {
         sponsor = creator;
         minimumContribution = minimum;
+        contractOpen = true;
     }
 
     function fund() public payable {
@@ -66,23 +70,38 @@ contract Elastik {
 
         //require(investors[msg.sender]);
         require(!request.voters[msg.sender]);
+        require(!request.complete == true);
+        require(!contractOpen == true);
 
         request.voters[msg.sender] = true;
         request.votersCount++;
     }
 
-    //  function getWinner() private view returns (unit){
-    //      get the high votersCount Dapp and send to finalize
-    //      finalizeDapp(uint index );
-    // }
+    function getWinner() public restricted {
+         //get the high votersCount Dapp and send to finalize
+        // Dapp storage request = projects[index]
+        uint256 largest = 0; 
+        uint256 i;
+
+        for(i = 0; i < projects.length ; i++){
+            if(projects[i].votersCount > largest) {
+                largest = projects[i].votersCount;
+                winnerIndex = i;
+            } 
+        }
+        finalizeDapp(winnerIndex);
+    }
     
     // after milestone validation sponsors can send money
     function milestoneValidation(uint index) public restricted{
             Dapp storage request = projects[index];
             request.recipient.transfer(request.value);
     }
+    
+    
 
     function finalizeDapp(uint index ) public restricted {
+        require(!contractOpen == true);
         Dapp storage request = projects[index];
 
         //require(request.votersCount > 2));
@@ -90,6 +109,8 @@ contract Elastik {
         // only half the cash is sent to the wineer
         request.recipient.transfer(request.value / 2);
         request.complete = true;
+        contractOpen == false;
+        //mark all project as complete function completeAll() or just close the contract
         //add reset all projects code here
      }
 
