@@ -21,14 +21,16 @@ contract Elastik {
         address recipient;
         bool complete;
         uint votersCount;
+        uint investorsCount;
         mapping(address => bool) voters;
+        mapping(address => bool) investors;
     }
 
     Dapp[] public projects;
     address public sponsor;
     uint public minimumContribution;
-    mapping(address => bool) public investors;
-    uint investorsCount;
+    
+    
     uint public winnerIndex;
     bool public contractOpen;
 
@@ -44,11 +46,15 @@ contract Elastik {
         contractOpen = true;
     }
 
-    function fund() public payable {
+    function fund(uint index) public payable {
+        Dapp storage request = projects[index];
+        require(!contractOpen == false);
         require (msg.value > minimumContribution);
 
-       investors[msg.sender] = true;
-       investorsCount++;
+       request.investors[msg.sender] = true;
+       if(msg.sender != sponsor){
+            request.investorsCount++;
+       }
     }
 
     function createDapp(string DappName, uint value, address recipient)
@@ -59,7 +65,8 @@ contract Elastik {
            value: value,
            recipient: recipient,
            complete: false,
-           votersCount: 0
+           votersCount: 0,
+           investorsCount:0
         });
 
         projects.push(newDapp);
@@ -69,15 +76,17 @@ contract Elastik {
         Dapp storage request = projects[index];
 
         //require(investors[msg.sender]);
+        require(!contractOpen == false);
         require(!request.voters[msg.sender]);
         require(!request.complete == true);
-        require(!contractOpen == true);
+        
 
         request.voters[msg.sender] = true;
         request.votersCount++;
     }
 
     function getWinner() public restricted {
+        require(!contractOpen == false);
          //get the high votersCount Dapp and send to finalize
         // Dapp storage request = projects[index]
         uint256 largest = 0; 
@@ -101,7 +110,7 @@ contract Elastik {
     
 
     function finalizeDapp(uint index ) public restricted {
-        require(!contractOpen == true);
+        require(!contractOpen == false);
         Dapp storage request = projects[index];
 
         //require(request.votersCount > 2));
@@ -112,6 +121,7 @@ contract Elastik {
         contractOpen == false;
         //mark all project as complete function completeAll() or just close the contract
         //add reset all projects code here
+        //return winner index
      }
 
     }
