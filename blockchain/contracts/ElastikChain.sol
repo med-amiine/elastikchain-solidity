@@ -4,7 +4,7 @@ contract Elastikchain{
     address[] public deployedChallenges;
     
     function creatChallenge(uint minimum) public{
-        address newChallenge = new Elastik(minimum, msg.sender);
+        address newChallenge = new Elastik(minimum, msg.sender, true);
         deployedChallenges.push(newChallenge);
     }
     
@@ -32,7 +32,7 @@ contract Elastik {
     
     
     uint public winnerIndex;
-    bool public contractOpen;
+    bool public contractStatus;
 
 
     modifier restricted() {
@@ -40,15 +40,15 @@ contract Elastik {
         _;
     }
 
-    constructor(uint minimum, address creator) public {
+    constructor(uint minimum, address creator, bool status) public {
         sponsor = creator;
         minimumContribution = minimum;
-        contractOpen = true;
+        contractStatus = status;
     }
 
     function fund(uint index) public payable {
         Dapp storage request = projects[index];
-        require(!contractOpen == false);
+        require(!contractStatus == false);
         require (msg.value > minimumContribution);
 
        request.investors[msg.sender] = true;
@@ -76,7 +76,7 @@ contract Elastik {
         Dapp storage request = projects[index];
 
         //require(investors[msg.sender]);
-        require(!contractOpen == false);
+        require(!contractStatus == false);
         require(!request.voters[msg.sender]);
         require(!request.complete == true);
         
@@ -86,7 +86,7 @@ contract Elastik {
     }
 
     function getWinner() public restricted {
-        require(!contractOpen == false);
+        require(!contractStatus == false);
          //get the high votersCount Dapp and send to finalize
         // Dapp storage request = projects[index]
         uint256 largest = 0; 
@@ -110,7 +110,7 @@ contract Elastik {
     
 
     function finalizeDapp(uint index ) public restricted {
-        require(!contractOpen == false);
+        require(!contractStatus == false);
         Dapp storage request = projects[index];
 
         //require(request.votersCount > 2));
@@ -118,7 +118,7 @@ contract Elastik {
         // only half the cash is sent to the wineer
         request.recipient.transfer(request.value / 2);
         request.complete = true;
-        contractOpen == false;
+        contractStatus == false;
         //mark all project as complete function completeAll() or just close the contract
         //add reset all projects code here
         //return winner index
