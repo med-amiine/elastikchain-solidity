@@ -37,9 +37,9 @@ Now you can copy the address of the contract and use to deploy "At address".
 As a sponsor start by creating your challenges and add all the Dapps (creatDapps) that will participate by categories lets say Defi apps.
 You need to fund the contract (fund) by the prize.(remember for every challenge you need to create a diffirent contract simply call Elastikchain )
 Set tight and let the users decide which DApps are more promising by voting (VoteDapp).
-At the end of the vote you will be able to release the fund to the winner (pickDapp) or follow the crowed vote (finalizeDapp).
+At the end of the vote you will be able to release the fund to the winner (finalizeDapp) or follow the crowed vote (getWinner).
 Investors are welcome to step up and invest (fund) any project they like preferably at the end of vote.
-Dapp winner will recieve part of teh fund and need to follow the milestones to get further fund.
+Dapp winner will recieve part of the fund and need to follow the milestones to get further fund(milestoneValidation).
 
 3.Who is behind this project
 
