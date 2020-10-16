@@ -1,5 +1,10 @@
 pragma solidity ^0.4.17;
 
+/**
+ * @title Elastikchain
+ * @notice This is the main contract that will manage other part of the Dapp`.
+ */
+
 contract Elastikchain{
     address[] public deployedChallenges;
     
