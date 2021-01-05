@@ -82,6 +82,7 @@ contract Elastik {
     public restricted
     {
      // to add check if a Dapp address exist already
+     
         Dapp memory newDapp = Dapp({
            DappName: DappName,
            value: value,
