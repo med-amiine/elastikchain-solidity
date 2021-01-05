@@ -2,6 +2,7 @@ pragma solidity ^0.4.17;
 
 /**
  * @title Elastikchain
+ * @author Mohammed El Amine Idmoussi
  * @notice This is the main contract that will manage other part of the Dapp`.
  */
 
@@ -39,12 +40,20 @@ contract Elastik {
     uint public winnerIndex;
     bool public contractStatus;
 
-
+    // only the sponsor can call restricted functions
     modifier restricted() {
         require(msg.sender == sponsor);
         _;
     }
 
+        /**
+    * Constructor function for Elastik
+    *
+    * @param _minimum The minimum contribution
+    * @param _creator The address of the sponsor
+    * @param _status The status of the contract
+    */
+    
     constructor(uint minimum, address creator, bool status) public {
         sponsor = creator;
         minimumContribution = minimum;
@@ -61,10 +70,18 @@ contract Elastik {
             request.investorsCount++;
        }
     }
-
+    
+    /**
+   * Add Dapps to the Elastik contract.
+   * @param DappName the name of the dapp
+   * @param value the invested value
+   * @param recipient the Dapp team address
+   * @push Dapp.
+   */
     function createDapp(string DappName, uint value, address recipient)
     public restricted
     {
+     // to add check if a Dapp address exist already
         Dapp memory newDapp = Dapp({
            DappName: DappName,
            value: value,
@@ -120,8 +137,10 @@ contract Elastik {
 
         //require(request.votersCount > 2));
         require(!request.complete);
-        // only half the cash is sent to the wineer
-        request.recipient.transfer(request.value / 2);
+        // the investors money is sent to the wineer
+        request.recipient.transfer(request.value);
+        // the prize is sent to the winner
+        request.recipient.transfer(address(this).balance);
         request.complete = true;
         contractStatus == false;
         //mark all project as complete function completeAll() or just close the contract
